@@ -28,7 +28,9 @@ from datasets import cifar, mnist, svhn
 import numpy as np
 import models.params
 from models import pixeldp_cnn, pixeldp_resnet, madry
-import tensorflow as tf
+
+import tensorflow.compat.v1 as tf
+
 import plots.plot_robust_accuracy
 import plots.plot_accuracy_under_attack
 import plots.plot_robust_precision_under_attack
@@ -38,6 +40,7 @@ from attacks import train_attack, evaluate_attack, pgd, carlini, params, carlini
 
 from flags import FLAGS
 
+tf.disable_v2_behavior()
 def run_one():
     # Manual runs support cpu or 1 gpu
     if FLAGS.num_gpus == 0:
